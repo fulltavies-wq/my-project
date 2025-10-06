@@ -39,28 +39,28 @@ function checkAgeAndShowTable() {
     }
     
     if (age < 18) {
-        console.log("Доступ запрещён");
-    } else {
-        console.log("Таблица умножения на " + age + ":");
-        for (let i = 1; i <= 10; i++) {
-            console.log(age + " × " + i + " = " + (age * i));
-        }
-    }
+// Работа с данными магазина
+console.log("\n=== Анализ данных ===");
+
+const items = [
+  { name: "блок А", price: 3300, available: true },
+  { name: "модуль Б", price: 2555, available: true },
+  { name: "комплекс В", price: 1500, available: false },
+  { name: "система Г", price: 2100, available: true },
+  { name: "набор Д", price: 1330, available: false },
+];
+
+const availableItems = items.filter(item => item.available);
+console.log("Доступные позиции:", availableItems);
+
+const availablePrices = availableItems.map(item => item.price);
+console.log("Стоимость доступных:", availablePrices);
+
+let totalCost = 0;
+for (let i = 0; i < availableItems.length; i++) {
+  totalCost += availableItems[i].price;
 }
+console.log("Общая сумма доступных:", totalCost);
 
-console.log("1. Сумма чисел от 1 до 10:");
-console.log("Сумма = " + calculateSum());
-console.log();
-
-console.log("2. Таблица умножения на 5:");
-multiplicationTable5();
-console.log();
-
-console.log("3. Факториал числа 6:");
-console.log("6! = " + factorial(6));
-console.log();
-
-console.log("4. Проверка возраста и таблица умножения:");
-checkAgeAndShowTable();
-
-console.log("JavaScript работает!");
+const sortedAvailableItems = [...availableItems].sort((a, b) => a.price - b.price);
+console.log("Сортировка по стоимости:", sortedAvailableItems);
